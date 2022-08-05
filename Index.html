@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A food delivery site that prioritizes customer satisfaction. Uses an API to get thousands of receipies and lets the user select what they want. Within a few clicks food will be at your doorstep"
+    />
+
+    <title>AllDayGourmet-Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="imgs/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="https://unpkg.com/phosphor-icons"></script>
+  </head>
+  <body class="container">
+    <div class="blured hidden"></div>
+    <!--Title and navbar-->
+    <header class="header">
+      <section class="title-and-logo">
+        <img
+          src="imgs/title-logo.png"
+          alt="Fork and spoon inside a cirlce as the page title logo"
+          class="title-logo"
+        />
+        <h1 class="title">AllDayGourmet</h1>
+      </section>
+      <!--navigation-->
+      <nav class="navigation">
+        <ul class="navigation-list">
+          <li class="navigation-item">
+            <a href="#why-us-section" class="navigation-link">Why Us?</a>
+          </li>
+          <li class="navigation-item">
+            <a href="#order-section" class="navigation-link">Order</a>
+          </li>
+          <li class="navigation-item">
+            <a href="" class="navigation-link">Contact Us</a>
+          </li>
+          <li class="navigation-item">
+            <a href="" class="navigation-link"
+              ><ion-icon name="cart-outline"></ion-icon
+            ></a>
+          </li>
+          <li class="navigation-item">
+            <a href="" class="navigation-link">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!--Hero section-->
+      <section class="hero-section">
+        <div>
+          <h2 class="hero-title">Order once and <br />you can't get enough</h2>
+          <p class="hero-text">
+            Our job is to make your busy life easier and happier<br />
+            with a fast and fresh meal
+          </p>
+          <a href="" class="get-started-link">Get Started &darr;</a>
+          <a href="" class="learn-more-link">Learn More &rarr;</a>
+
+          <div class="avatars">
+            <img
+              src="imgs/uifaces/ava1.jpg"
+              alt="Customer face icon"
+              class="avatar-img"
+            />
+            <img
+              src="imgs/uifaces/ava2.jpg"
+              alt="Customer face icon"
+              class="avatar-img"
+            />
+            <img
+              src="imgs/uifaces/ava3.jpg"
+              alt="Customer face icon"
+              class="avatar-img"
+            />
+            <img
+              src="imgs/uifaces/ava4.jpg"
+              alt="Customer face icon"
+              class="avatar-img"
+            />
+            <img
+              src="imgs/uifaces/ava5.jpg"
+              alt="Customer face icon"
+              class="avatar-img"
+            />
+            <p class="avatar-text">
+              <a href="" class="review-number">250,000+</a> satisfied customers
+            </p>
+          </div>
+          <p class="avatar-rating">
+            <span class="rate-star">⭐ 5.0</span>
+            <span class="rate-reviews">(30k reviews)</span>
+          </p>
+        </div>
+        <div>
+          <picture>
+            <source srcset="imgs/hero-bg.webp" type="image/webp" />
+            <source srcset="imgs/hero-bg.jpg" type="image/jpg" />
+            <img
+              src="imgs/hero-bg.webp"
+              alt="an image containing different types of food. A summer barbeque"
+              class="hero-bg-img"
+            />
+          </picture>
+        </div>
+      </section>
+
+      <!--Why Us section-->
+      <section class="why-us" id="why-us-section">
+        <h2 class="why-us-main-header">Why Choose Us</h2>
+        <h3 class="why-us-second-header">
+          We are the fastest delivery in town
+        </h3>
+        <div class="illustration-grid">
+          <picture>
+            <source srcset="imgs/why-1.webp" type="image/webp" />
+            <source srcset="imgs/why-1.png" type="image/png" />
+            <img
+              src="imgs/why-1.webp"
+              alt="Illustration of a lady holding a phone and browsing the internet"
+              class="illustration ill-1"
+            />
+          </picture>
+          <p class="illustration-header ill-head-1">Make a few clicks</p>
+          <p class="illustration-text ill-tex-1">
+            You only need a few clicks to order your food
+          </p>
+          <picture>
+            <source srcset="imgs/why-2.webp" type="image/webp" />
+            <source srcset="imgs/why-2.png" type="image/png" />
+            <img
+              src="imgs/why-2.webp"
+              alt="Illustration of a drone delivering a package"
+              class="illustration ill-2"
+            />
+          </picture>
+          <p class="illustration-header ill-head-2">
+            Our delivery got the speed
+          </p>
+          <p class="illustration-text ill-tex-2">
+            Don't be surprised if we arrive as soon as you order
+          </p>
+          <picture>
+            <source srcset="imgs/why-3.webp" type="image/webp" />
+            <source srcset="imgs/why-3.png" type="image/png" />
+            <img
+              src="imgs/why-3.webp"
+              alt="Illustration of a group of people sharing pizza"
+              class="illustration ill-3"
+            />
+          </picture>
+          <p class="illustration-header ill-head-3">Enjoy your meal</p>
+          <p class="illustration-text ill-tex-3">
+            Speed is important but so is quality. We promise you that every bite
+            will taste ecstatic
+          </p>
+        </div>
+      </section>
+      <!--Menu Search section-->
+
+      <!--Testimonial Carousal-->
+      <h2 class="testimonal-header">What They Say</h2>
+      <h3 class="partners-section-header-text">
+        What Our Customers Say About Us
+      </h3>
+
+      <section class="testimonials-container">
+        <button class="btn btn--left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <div class="testimonial">
+          <div class="test testimonial-1">
+            <img
+              src="imgs/person-1.jpg"
+              alt="Photo of a male with a hat wearing a grey t-shirt"
+              class="testimonial-img img-1"
+            />
+            <blockquote class="testimonal-blockquote quote-1">
+              <p class="testimonial-text">
+                "Thanks for the great service. No matter where you go,
+                AllDayGourmet is the trending topic!"
+              </p>
+              <p class="testimonial-writer">~ Ian Dooley ~</p>
+            </blockquote>
+          </div>
+          <div class="test testimonial-2">
+            <img
+              src="imgs/person-2.jpg"
+              alt="Photo of a male with a hat wearing a grey t-shirt"
+              class="testimonial-img img-1"
+            />
+            <blockquote class="testimonal-blockquote quote-1">
+              <p class="testimonial-text">
+                "Fantastic, I'm totally blown away by AllDayGourmet. Food tastes
+                better when it's delivered with care and on time"
+              </p>
+              <p class="testimonial-writer">~ Toa Heftiba ~</p>
+            </blockquote>
+          </div>
+          <div class="test testimonial-3">
+            <img
+              src="imgs/person-3.jpg"
+              alt="Photo of a male with a hat wearing a grey t-shirt"
+              class="testimonial-img img-1"
+            />
+            <blockquote class="testimonal-blockquote quote-1">
+              <p class="testimonial-text">
+                "Would definitely recommend AllDayGourmet and will definitely be
+                ordering again."
+              </p>
+              <p class="testimonial-writer">~ Vanessa Dam ~</p>
+            </blockquote>
+          </div>
+        </div>
+
+        <button class="btn btn--right">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+        <div class="buttons">
+          <div class="circle-btn active" data-slide="0"></div>
+          <div class="circle-btn" data-slide="1"></div>
+          <div class="circle-btn" data-slide="2"></div>
+        </div>
+      </section>
+
+      <!--Partnered with section-->
+      <section class="partners-section">
+        <h2 class="partners-header">Our Trusted Partners</h2>
+        <div class="partners-logos">
+          <img
+            src="imgs/bym-logo.png"
+            alt="Beyond Meat logo"
+            class="partners-logo-img"
+          />
+          <img
+            src="imgs/canoe-logo.jpg"
+            alt="Logo of Canoe Restaaurent in Canada"
+            class="partners-logo-img"
+          />
+          <img
+            src="imgs/coce-logo.jpg"
+            alt="Coca Cola logo"
+            class="partners-logo-img"
+          />
+          <img
+            src="imgs/mac-logo.png"
+            alt="MacDonalds logo"
+            class="partners-logo-img"
+          />
+          <img
+            src="imgs/rimrock-logo.jpg"
+            alt="Logo of Rimrock Cafe in Canada"
+            class="partners-logo-img"
+          />
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <section class="footer-section">
+        <div class="footer-grid">
+          <div class="footer-socials footer-category">
+            <div class="logo-and-title">
+              <a href="#" class="footer-logo-link"
+                ><img
+                  src="imgs/title-logo.png"
+                  alt="Footer logo. Fork and spoon inside a circle with an orange border"
+                  class="footer-logo"
+              /></a>
+              <h3 class="footer-title footer-logo-title">AllDayGourmet</h3>
+            </div>
+            <ul class="footer-list socials-list">
+              <li class="footer-item">
+                <a href="" class="socials-link"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256"
+                    class="socials-logo"
+                  >
+                    <rect width="256" height="256" fill="none"></rect>
+                    <circle
+                      cx="128"
+                      cy="128"
+                      r="34"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></circle>
+                    <rect
+                      x="32"
+                      y="32"
+                      width="192"
+                      height="192"
+                      rx="48"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></rect>
+                    <circle cx="180" cy="76" r="16"></circle>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-item">
+                <a href="" class="socials-link"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256"
+                    class="socials-logo"
+                  >
+                    <rect width="256" height="256" fill="none"></rect>
+                    <circle
+                      cx="128"
+                      cy="128"
+                      r="96"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></circle>
+                    <path
+                      d="M168,88H152a23.9,23.9,0,0,0-24,24V224"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></path>
+                    <line
+                      x1="96"
+                      y1="144"
+                      x2="160"
+                      y2="144"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></line>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-item">
+                <a href="" class="socials-link"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="socials-logo"
+                    viewBox="0 0 256 256"
+                  >
+                    <rect width="256" height="256" fill="none"></rect>
+                    <path
+                      d="M128,88c0-22,18.5-40.3,40.5-40a40,40,0,0,1,36.2,24H240l-32.3,32.3A127.9,127.9,0,0,1,80,224c-32,0-40-12-40-12s32-12,48-36c0,0-64-32-48-120,0,0,40,40,88,48Z"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="24"
+                    ></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright">
+              Copyright &copy; <span class="year"></span> by AllDayGourmet. All
+              rights reserved
+            </p>
+          </div>
+          <div class="footer-contact footer-category">
+            <h3 class="footer-title">Contact Us</h3>
+            <address class="contact">
+              <p class="addr">3095 Woolwick Drive, Toronto, Ontario M1H1A8</p>
+              <p>
+                <a href="tel:+1(647)449-0532" class="contact-info"
+                  >+1(647)449-0532</a
+                ><br />
+                <a href="mailto:alldaygourmet@gmail.com" class="contact-info"
+                  >alldaygourmet@gmail.com</a
+                >
+              </p>
+            </address>
+            <form class="contact-form">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                aria-label="Enter Email Address to get in touch"
+              />
+              <button type="button" class="email-btn">
+                <i class="ph-paper-plane-right btn-icon"></i>
+              </button>
+            </form>
+          </div>
+          <div class="footer-about footer-category">
+            <h3 class="footer-title">About Us</h3>
+            <ul class="footer-list">
+              <li class="footer-item">
+                <a class="footer-pointer">About Us</a>
+              </li>
+              <li class="footer-item">
+                <a class="footer-pointer">Features</a>
+              </li>
+              <li class="footer-item"><a class="footer-pointer">News</a></li>
+              <li class="footer-item"><a class="footer-pointer">Menu</a></li>
+            </ul>
+          </div>
+          <div class="footer-company footer-category">
+            <h3 class="footer-title">Company</h3>
+            <ul class="footer-list">
+              <li class="footer-item">
+                <a class="footer-pointer">Why AllDayGourmet?</a>
+              </li>
+              <li class="footer-item"><a class="footer-pointer">Careers</a></li>
+              <li class="footer-item"><a class="footer-pointer">FAQ</a></li>
+              <li class="footer-item">
+                <a class="footer-pointer">Partner With Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-support footer-category">
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-list">
+              <li class="footer-item"><a class="footer-pointer">Account</a></li>
+              <li class="footer-item">
+                <a class="footer-pointer">Support Center</a>
+              </li>
+              <li class="footer-item">
+                <a class="footer-pointer">Feedback</a>
+              </li>
+              <li class="footer-item">
+                <a class="footer-pointer">Accesibility</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </body>
+  <script src="./src/js/script.js"></script>
+</html>

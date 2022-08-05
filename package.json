@@ -1,0 +1,23 @@
+{
+  "name": "alldaygourmet",
+  "version": "1.0.0",
+  "description": "",
+  "default": "Index.html",
+  "scripts": {
+    "start": "parcel Index.html",
+    "build": "parcel build Index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himethdaha/AllDayGourmet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himethdaha/AllDayGourmet/issues"
+  },
+  "homepage": "https://github.com/himethdaha/AllDayGourmet#readme",
+  "devDependencies": {
+    "parcel": "^2.0.0-nightly.644"
+  }
+}

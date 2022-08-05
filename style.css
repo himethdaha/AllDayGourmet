@@ -310,6 +310,139 @@ body {
 }
 
 /*******SEARCH FOR RECEIPIES SECTION*********/
+.menu-search {
+  margin-bottom: 14rem;
+  height: 100%;
+}
+.menu-search-header-text {
+  display: flex;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  font-size: 1.8rem;
+  color: #e8590c;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+  margin-top: 3rem;
+}
+.menu-search-second-header {
+  display: flex;
+  justify-content: center;
+  font-size: 4.4rem;
+  letter-spacing: 0.4px;
+  margin-bottom: 4.4rem;
+}
+
+.menu-search-box {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  height: 100%;
+  margin-bottom: 5.2rem;
+}
+
+.menu-search-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 3.2rem 1.6rem;
+  align-items: center;
+}
+
+.menu-search-form {
+  display: flex;
+  margin-left: 5.2rem;
+  z-index: 999;
+}
+
+.input-item {
+  border-radius: 10rem;
+  width: 30rem;
+  border: none;
+  color: #000;
+  margin-right: 1.2rem;
+  padding: 1rem;
+  box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.411);
+  outline: none;
+}
+
+.input-item[type="text"]::placeholder {
+  text-align: left;
+}
+
+.btn-search {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  border: none;
+  padding: 1.6rem 4rem;
+  border-radius: 10rem;
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.btn-search:hover {
+  box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.411);
+}
+
+.search-icon {
+  height: 15px;
+  stroke: #fff;
+}
+.btn-extras {
+  display: flex;
+  gap: 4.4rem;
+  position: relative;
+}
+
+.btn-extra {
+  background: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #343a40;
+  padding: 1rem;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-extra:hover {
+  background-color: #f8f9fa;
+}
+
+.svg-extra {
+  height: 2rem;
+  stroke: #f38e82;
+}
+
+.orders-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 40rem;
+  top: 90%;
+  left: -10%;
+  background-color: rgb(226, 226, 226);
+  z-index: 10;
+}
+
+.bookmarks-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 40rem;
+  top: 90%;
+  right: -1.7rem;
+  background-color: rgb(226, 226, 226);
+  padding-top: 8px;
+  z-index: 10;
+}
 /****Partners section***/
 .partners-section {
   margin-bottom: 4rem;

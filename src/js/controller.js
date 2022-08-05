@@ -6,7 +6,24 @@ async function food() {
       "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcd09"
     );
     let data = await res.json();
-    console.log(data.data.recipe.title);
+
+    if (res.ok === false) {
+      throw new Error(`It's a ${res.statusText}. ${data.message}`);
+    } else {
+      let recipe = data.data.recipe;
+      //   console.log(recipe);
+      recipe = {
+        id: recipe.id,
+        title: recipe.title,
+        img: recipe.image_url,
+        publisher: recipe.publisher,
+        source: recipe.source_url,
+        ingredients: recipe.ingredients,
+        servings: recipe.servings,
+        time: recipe.cooking_time,
+      };
+      console.log(recipe);
+    }
   } catch (error) {
     console.log(error);
   }

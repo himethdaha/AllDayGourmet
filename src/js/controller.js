@@ -3,12 +3,13 @@
 
 //Element selectors
 const searchedItem = document.querySelector(".searched-item");
+const messageBox = document.querySelector(".message");
 
 async function food() {
   //Getting the recipie
   try {
     let res = await fetch(
-      "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcd09"
+      "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bca5d"
     );
     let data = await res.json();
 
@@ -28,9 +29,8 @@ async function food() {
         time: recipe.cooking_time,
       };
       console.log(recipe);
-      recipe.ingredients.forEach((element) => {
-        console.log(element);
-      });
+      let maps = recipe.ingredients.map((element) => {});
+      console.log(maps);
 
       //2) Rendering the recipie
       const markup = `
@@ -130,11 +130,12 @@ async function food() {
         <div class="dish-ingredients">
             <h2 class="ingredients-header">Receipe Ingredients</h2>
                 <ul class="ingredient-list">
-                    ${recipe.ingredients.forEach((element) => {
-                      `<li class="ingredient">
+                    ${recipe.ingredients
+                      .map((element) => {
+                        return `<li class="ingredient">
                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="ingredient-icon"><rect width="256" height="256" fill="none"></rect><polyline points="172 104 113.3 160 84 132" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><circle cx="128" cy="128" r="96" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle></svg>
                         <div class="ingredient-amount">${
-                          element.quantity === null ? 0 : element.quantity
+                          element.quantity === null ? "" : element.quantity
                         }</div>
                         <div class="receipe-ingredient">
                             <span class="receipe-ingredient-text">${
@@ -142,12 +143,15 @@ async function food() {
                             }</span>
                         </div>
                     </li>`;
-                    })}
+                      })
+                      .join("")}
                 
                 </ul>
         </div>
       `;
 
+      //Hide the message box
+      messageBox.parentElement.removeChild(messageBox);
       //Insert the recipie into the parent element
       searchedItem.insertAdjacentHTML("beforeend", markup);
     }

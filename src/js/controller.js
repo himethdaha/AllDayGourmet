@@ -174,5 +174,10 @@ async function food() {
   }
 }
 
-//Event listner to load recipies on hashChange
-window.addEventListener("hashchange", food);
+//Event listner to load recipies on hashChange and load event
+const loadRecipie = (functionName) => {
+  window.addEventListener("hashchange", functionName);
+  window.addEventListener("load", functionName);
+};
+
+loadRecipie(food);

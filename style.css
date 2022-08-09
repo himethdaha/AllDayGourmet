@@ -40,6 +40,24 @@ body {
   background-color: #f8f9fa;
 }
 
+.spinner-div {
+  display: 5rem auto;
+  text-align: center;
+}
+.spinner {
+  height: 8rem;
+  stroke: #f38e82;
+  animation: 1s load infinite linear;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .container {
   margin: 0 auto;
   max-width: 120rem;

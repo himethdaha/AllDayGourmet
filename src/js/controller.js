@@ -5,9 +5,22 @@
 const searchedItem = document.querySelector(".searched-item");
 const messageBox = document.querySelector(".message");
 
+//Spinner function
+const loadingSpinner = function (parentEl) {
+  const markup = `
+  <div class="spinner-div">
+    <svg xmlns="http://www.w3.org/2000/svg" class="spinner" width="192" height="192"  viewBox="0 0 256 256"><line x1="128" y1="32" x2="128" y2="64" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="224" y1="128" x2="192" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="195.9" y1="195.9" x2="173.3" y2="173.3" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="128" y1="224" x2="128" y2="192" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="195.9" x2="82.7" y2="173.3" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="32" y1="128" x2="64" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="60.1" x2="82.7" y2="82.7" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
+  </div>
+  `;
+
+  parentEl.innerHTML = "";
+  parentEl.insertAdjacentHTML("afterbegin", markup);
+};
 async function food() {
   //Getting the recipie
   try {
+    //While await, call loadSpinner
+    loadingSpinner(searchedItem);
     let res = await fetch(
       "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bca5d"
     );
@@ -28,9 +41,6 @@ async function food() {
         servings: recipe.servings,
         time: recipe.cooking_time,
       };
-      console.log(recipe);
-      let maps = recipe.ingredients.map((element) => {});
-      console.log(maps);
 
       //2) Rendering the recipie
       const markup = `
@@ -150,8 +160,8 @@ async function food() {
         </div>
       `;
 
-      //Hide the message box
-      messageBox.parentElement.removeChild(messageBox);
+      //Hide the message box and spinner
+      searchedItem.innerHTML = "";
       //Insert the recipie into the parent element
       searchedItem.insertAdjacentHTML("beforeend", markup);
     }

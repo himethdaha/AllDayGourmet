@@ -19,10 +19,14 @@ const loadingSpinner = function (parentEl) {
 async function food() {
   //Getting the recipie
   try {
+    //Get the id from the url
+    const id = window.location.hash.split("#");
+    console.log(id);
+
     //While await, call loadSpinner
     loadingSpinner(searchedItem);
-    let res = await fetch(
-      "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bca5d"
+    res = await fetch(
+      `https://forkify-api.herokuapp.com/api/v2/recipes/${id[1]}`
     );
     let data = await res.json();
 
@@ -170,4 +174,5 @@ async function food() {
   }
 }
 
-food();
+//Event listner to load recipies on hashChange
+window.addEventListener("hashchange", food);

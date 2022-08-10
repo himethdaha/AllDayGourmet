@@ -1,3 +1,5 @@
+//IMPORTS
+import { API_URL } from "./config";
 //State Object
 //Which will be rendered in the UI to display all the data regarding a certain food  item
 export const state = {
@@ -6,9 +8,7 @@ export const state = {
 
 export const loadRecipie = async function (id) {
   try {
-    let res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id[1]}`
-    );
+    let res = await fetch(`${API_URL}/${id[1]}`);
     let data = await res.json();
 
     if (res.ok === false) {

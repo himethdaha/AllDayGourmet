@@ -1,3 +1,6 @@
+import * as model from "./model.js";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 //API I will be using - https://forkify-api.herokuapp.com/v2
 //https://forkify-api.herokuapp.com/api/v2/recipes?(query string)search=pizza
 
@@ -21,41 +24,30 @@ async function food() {
   try {
     //Get the id from the url
     const id = window.location.hash.split("#");
-    console.log(id);
+
+    //If there is no id in the url just return
+    if (id.length === 1) {
+      return;
+    }
 
     //While await, call loadSpinner
     loadingSpinner(searchedItem);
-    res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id[1]}`
-    );
-    let data = await res.json();
 
-    if (res.ok === false) {
-      throw new Error(`It's a ${res.statusText}. ${data.message}`);
-    } else {
-      let recipe = data.data.recipe;
-      //   console.log(recipe);
-      recipe = {
-        id: recipe.id,
-        title: recipe.title,
-        img: recipe.image_url,
-        publisher: recipe.publisher,
-        source: recipe.source_url,
-        ingredients: recipe.ingredients,
-        servings: recipe.servings,
-        time: recipe.cooking_time,
-      };
-
-      //2) Rendering the recipie
-      const markup = `
+    //1) Loading the recipie
+    //Not saving anything here cos we don't return anything in this promise
+    await model.loadRecipie(id);
+    //Save state into recipie variable
+    const recipie = model.state.recipie;
+    //2) Rendering the recipie
+    const markup = `
       <figure class="figure-section">
                 <img
-                  src="${recipe.img}"
+                  src="${recipie.img}"
                   alt=""
                   class="food-image"
                 />
                 <h1 class="food-title">
-                  <span class="food-title-span">${recipe.title}</span>
+                  <span class="food-title-span">${recipie.title}</span>
                 </h1>
         </figure>
         <div class="cooking-details">
@@ -83,7 +75,7 @@ async function food() {
                     </polyline>
                 </svg>
                 <span class="cooking-info-no cooking-time-no data-time">${
-                  recipe.time
+                  recipie.time
                 }</span>
                 <span class="cooking-info-text cooking-time-text">Minitues</span>
             </div>
@@ -125,7 +117,7 @@ async function food() {
                       </path>
                    </svg>
                   <span class="cooking-info-no servings-number">${
-                    recipe.servings
+                    recipie.servings
                   }</span>
                   <span class="cooking-info-text servings-number-text">Servings</span>
                 <div class="quantity-buttons">
@@ -144,7 +136,7 @@ async function food() {
         <div class="dish-ingredients">
             <h2 class="ingredients-header">Receipe Ingredients</h2>
                 <ul class="ingredient-list">
-                    ${recipe.ingredients
+                    ${recipie.ingredients
                       .map((element) => {
                         return `<li class="ingredient">
                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="ingredient-icon"><rect width="256" height="256" fill="none"></rect><polyline points="172 104 113.3 160 84 132" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><circle cx="128" cy="128" r="96" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle></svg>
@@ -164,20 +156,19 @@ async function food() {
         </div>
       `;
 
-      //Hide the message box and spinner
-      searchedItem.innerHTML = "";
-      //Insert the recipie into the parent element
-      searchedItem.insertAdjacentHTML("beforeend", markup);
-    }
+    //Hide the message box and spinner
+    searchedItem.innerHTML = "";
+    //Insert the recipie into the parent element
+    searchedItem.insertAdjacentHTML("beforeend", markup);
   } catch (error) {
     console.log(error);
   }
 }
 
 //Event listner to load recipies on hashChange and load event
-const loadRecipie = (functionName) => {
+const persistId = (functionName) => {
   window.addEventListener("hashchange", functionName);
   window.addEventListener("load", functionName);
 };
 
-loadRecipie(food);
+persistId(food);

@@ -19,5 +19,9 @@
   "homepage": "https://github.com/himethdaha/AllDayGourmet#readme",
   "devDependencies": {
     "parcel": "^2.0.0-nightly.644"
+  },
+  "dependencies": {
+    "core-js": "^3.20.3",
+    "regenerator-runtime": "^0.13.9"
   }
 }

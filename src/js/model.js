@@ -1,7 +1,7 @@
 //State Object
 //Which will be rendered in the UI to display all the data regarding a certain food  item
 export const state = {
-  recipie: {},
+  recipe: {},
 };
 
 export const loadRecipie = async function (id) {
@@ -15,7 +15,7 @@ export const loadRecipie = async function (id) {
       throw new Error(`It's a ${res.statusText}. ${data.message}`);
     }
     const recipe = data.data.recipe;
-    state.recipie = {
+    state.recipe = {
       id: recipe.id,
       title: recipe.title,
       img: recipe.image_url,

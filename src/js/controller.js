@@ -5,7 +5,7 @@ import "regenerator-runtime/runtime";
 //API I will be using - https://forkify-api.herokuapp.com/v2
 //https://forkify-api.herokuapp.com/api/v2/recipes?(query string)search=pizza
 
-async function food() {
+async function controlRecipes() {
   //Getting the recipie
   try {
     //Get the id from the url
@@ -29,10 +29,9 @@ async function food() {
   }
 }
 
-//Event listner to load recipies on hashChange and load event
-const persistId = (functionName) => {
-  window.addEventListener("hashchange", functionName);
-  window.addEventListener("load", functionName);
+//Initialization Method
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
 };
 
-persistId(food);
+init();

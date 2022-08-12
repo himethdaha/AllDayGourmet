@@ -153,6 +153,12 @@ class RecipeView {
     </div>
     `;
   }
+
+  //Publisher to load recipies on hashChange and load event
+  addHandlerRender(handler) {
+    window.addEventListener("hashchange", handler);
+    window.addEventListener("load", handler);
+  }
 }
 
 export default new RecipeView();

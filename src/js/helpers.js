@@ -21,6 +21,6 @@ export const getJsonData = async function (url) {
     return data;
   } catch (error) {
     //Re-throw error to be caught by the model and to reject the promise
-    throw new Error(error);
+    throw error;
   }
 };

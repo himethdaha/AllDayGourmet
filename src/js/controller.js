@@ -25,7 +25,8 @@ async function controlRecipes() {
     //2) Rendering the recipe
     recipeView.render(model.state.recipe);
   } catch (error) {
-    console.log(error);
+    //Passing in the error from 'helpers.js' which was caught and re thrown by 'model.js' to be seen by the user
+    recipeView.errorMessage(error);
   }
 }
 

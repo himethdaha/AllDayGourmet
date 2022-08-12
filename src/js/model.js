@@ -24,6 +24,8 @@ export const loadRecipie = async function (id) {
     };
     console.log(recipe);
   } catch (err) {
-    console.log(`Model Error = ${err}`);
+    console.log(`Model Error: ${err}`);
+    //Throwing error to be handled by the controller so that the user can see it
+    throw err;
   }
 };

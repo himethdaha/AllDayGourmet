@@ -1,5 +1,6 @@
 //IMPORTS
 import { API_URL } from "./config";
+import { getJsonData } from "./helpers";
 //State Object
 //Which will be rendered in the UI to display all the data regarding a certain food  item
 export const state = {
@@ -8,12 +9,8 @@ export const state = {
 
 export const loadRecipie = async function (id) {
   try {
-    let res = await fetch(`${API_URL}/${id[1]}`);
-    let data = await res.json();
-
-    if (res.ok === false) {
-      throw new Error(`It's a ${res.statusText}. ${data.message}`);
-    }
+    //Method from helpers.js
+    const data = await getJsonData(`${API_URL}/${id[1]}`);
     const recipe = data.data.recipe;
     state.recipe = {
       id: recipe.id,
@@ -27,6 +24,6 @@ export const loadRecipie = async function (id) {
     };
     console.log(recipe);
   } catch (err) {
-    console.log(err);
+    console.log(`Model Error = ${err}`);
   }
 };

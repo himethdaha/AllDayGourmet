@@ -16,7 +16,6 @@ class RecipeView {
   }
   render(data) {
     this.#data = data;
-    console.log(this.#data);
     //Create the markup
     const markup = this.#generateMarkup();
     //Hide the message box and spinner

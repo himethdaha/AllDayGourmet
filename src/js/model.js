@@ -6,6 +6,9 @@ import { getJsonData } from "./helpers";
 //Which will be rendered in the UI to display all the data regarding a certain food  item
 export const state = {
   recipe: {},
+  search: {
+    recipes: [],
+  },
 };
 
 export const loadRecipie = async function (id) {
@@ -34,7 +37,16 @@ export const searchResults = async function (query) {
   try {
     //Method from helpers.js
     const data = await getJsonData(`${API_URL}?search=${query}`);
-    console.log(data);
+    //Push recipes array into the state object
+    state.search.recipes = data.data.recipes.map((recipe) => {
+      return {
+        id: recipe.id,
+        title: recipe.title,
+        img: recipe.image_url,
+        publisher: recipe.publisher,
+      };
+    });
+    console.log(state.search);
   } catch (error) {
     console.log(`Model Error: ${error}`);
     //Throwing error to be handled by the controller so that the user can see it

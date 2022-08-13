@@ -46,12 +46,9 @@ export const searchResults = async function (query) {
         publisher: recipe.publisher,
       };
     });
-    console.log(state.search);
   } catch (error) {
     console.log(`Model Error: ${error}`);
     //Throwing error to be handled by the controller so that the user can see it
     throw err;
   }
 };
-
-searchResults("pizza");

@@ -1,39 +1,21 @@
+import View from "./View";
 import { mark } from "regenerator-runtime";
 import { Fraction } from "fractional";
-class RecipeView {
-  //Private properties
-  #parentElement = document.querySelector(".searched-item");
-  #data;
 
-  //Methods
-  renderSpinner() {
-    //Create the spinner markuo
-    const spinner = this.spinnerMarkup();
-    //Clear everything for the spinner
-    this.#parentElement.innerHTML = "";
-    //Insert spinner
-    this.#parentElement.insertAdjacentHTML("afterbegin", spinner);
-  }
-  render(data) {
-    this.#data = data;
-    //Create the markup
-    const markup = this.#generateMarkup();
-    //Hide the message box and spinner
-    this.#parentElement.innerHTML = "";
-    //Insert the recipie into the parent element
-    this.#parentElement.insertAdjacentHTML("beforeend", markup);
-  }
+class RecipeView extends View {
+  //Protected properties
+  _parentElement = document.querySelector(".searched-item");
 
-  #generateMarkup() {
+  _generateMarkup() {
     return `
       <figure class="figure-section">
                 <img
-                  src="${this.#data.img}"
+                  src="${this._data.img}"
                   alt=""
                   class="food-image"
                 />
                 <h1 class="food-title">
-                  <span class="food-title-span">${this.#data.title}</span>
+                  <span class="food-title-span">${this._data.title}</span>
                 </h1>
         </figure>
         <div class="cooking-details">
@@ -61,7 +43,7 @@ class RecipeView {
                     </polyline>
                 </svg>
                 <span class="cooking-info-no cooking-time-no data-time">${
-                  this.#data.time
+                  this._data.time
                 }</span>
                 <span class="cooking-info-text cooking-time-text">Minitues</span>
             </div>
@@ -103,7 +85,7 @@ class RecipeView {
                       </path>
                    </svg>
                   <span class="cooking-info-no servings-number">${
-                    this.#data.servings
+                    this._data.servings
                   }</span>
                   <span class="cooking-info-text servings-number-text">Servings</span>
                 <div class="quantity-buttons">
@@ -122,7 +104,7 @@ class RecipeView {
         <div class="dish-ingredients">
             <h2 class="ingredients-header">Receipe Ingredients</h2>
                 <ul class="ingredient-list">
-                    ${this.#data.ingredients
+                    ${this._data.ingredients
                       .map((element) => {
                         return `<li class="ingredient">
                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="ingredient-icon"><rect width="256" height="256" fill="none"></rect><polyline points="172 104 113.3 160 84 132" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><circle cx="128" cy="128" r="96" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle></svg>
@@ -145,14 +127,6 @@ class RecipeView {
       `;
   }
 
-  spinnerMarkup() {
-    return `
-    <div class="spinner-div">
-      <svg xmlns="http://www.w3.org/2000/svg" class="spinner" width="192" height="192"  viewBox="0 0 256 256"><line x1="128" y1="32" x2="128" y2="64" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="224" y1="128" x2="192" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="195.9" y1="195.9" x2="173.3" y2="173.3" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="128" y1="224" x2="128" y2="192" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="195.9" x2="82.7" y2="173.3" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="32" y1="128" x2="64" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="60.1" y1="60.1" x2="82.7" y2="82.7" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
-    </div>
-    `;
-  }
-
   errorMessage(message) {
     const markup = `
     <div class="error-message">
@@ -162,8 +136,8 @@ class RecipeView {
         <span class="error-message-text">${message}</span>
     </div>
     `;
-    this.#parentElement.innerHTML = "";
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this._parentElement.innerHTML = "";
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   //Publisher to load recipies on hashChange and load event

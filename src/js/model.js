@@ -8,6 +8,7 @@ export const state = {
   recipe: {},
   search: {
     recipes: [],
+    page: 1,
   },
 };
 
@@ -55,7 +56,9 @@ export const searchResults = async function (query) {
 
 //For Pagination
 //Limiting results per page
-export const resultsPerPage = function (page) {
+export const resultsPerPage = function (page = state.search.page) {
+  //Store the page no
+  state.search.page = page;
   //Starting item
   const start = (page - 1) * RESULTS_PER_PAGE;
   //Ending item

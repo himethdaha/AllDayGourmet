@@ -1,4 +1,4 @@
-import View from "./View";
+import View from "./View.js";
 import { mark } from "regenerator-runtime";
 import { Fraction } from "fractional";
 

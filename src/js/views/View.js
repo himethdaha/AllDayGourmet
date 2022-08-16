@@ -3,6 +3,18 @@ export default class View {
   _data;
 
   //Methods
+
+  render(data) {
+    this._data = data;
+    console.log(this._data);
+    //Create the markup
+    const markup = this._generateMarkup();
+    //Hide the message box and spinner
+    this._parentElement.innerHTML = "";
+    //Insert the recipie into the parent element
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
   renderSpinner() {
     //Create the spinner markuo
     const spinner = this.spinnerMarkup();
@@ -10,15 +22,6 @@ export default class View {
     this._parentElement.innerHTML = "";
     //Insert spinner
     this._parentElement.insertAdjacentHTML("afterbegin", spinner);
-  }
-  render(data) {
-    this._data = data;
-    //Create the markup
-    const markup = this._generateMarkup();
-    //Hide the message box and spinner
-    this._parentElement.innerHTML = "";
-    //Insert the recipie into the parent element
-    this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
   spinnerMarkup() {

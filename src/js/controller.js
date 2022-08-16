@@ -1,6 +1,7 @@
 import * as model from "./model.js";
 import recipeView from "./views/recipieView.js";
 import searchView from "./views/searchView.js";
+import resultsView from "./views/resultsView.js";
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -39,13 +40,26 @@ async function searchRecipes() {
   try {
     //1)Query coming in from the searchView
     const query = searchView.getQuery();
-
+    console.log(query);
     //If no query present
     if (!query) return;
+
+    //While await, call renderSpinner
+    resultsView.renderSpinner();
 
     //2) Loading all the recipes
     await model.searchResults(query);
     console.log(model.state.search.recipes);
+
+    //3)Rendering the recipes
+    resultsView.render(model.state.search.recipes);
+
+    //If there are no searched results
+    if (model.state.search.recipes.length === 0) {
+      resultsView.errorMessage(
+        `No Items found. Please check your spellings and try again! 🙂`
+      );
+    }
   } catch (error) {
     console.log(error);
   }

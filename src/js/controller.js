@@ -51,10 +51,11 @@ async function searchRecipes() {
     //2) Loading all the recipes
     await model.searchResults(query);
 
-    //3)Rendering the recipes
-    resultsView.render(model.resultsPerPage(2));
+    //3)Rendering the recipes for the first set of results
+    // resultsView.render(model.state.search.recipes);
+    resultsView.render(model.resultsPerPage());
 
-    //4)Rendering pagination
+    //4)Rendering pagination for page 2
     paginationView.render(model.state.search);
 
     //If there are no searched results
@@ -67,10 +68,19 @@ async function searchRecipes() {
     console.log(error);
   }
 }
+
+//Function for pagination with new results and pagination buttons
+async function paginateRecipes(page) {
+  //Rendering new results
+  resultsView.render(model.resultsPerPage(page));
+  //Rendering new pagination buttons
+  paginationView.render(model.state.search);
+}
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(searchRecipes);
+  paginationView.addHandlerChangeResults(paginateRecipes);
 };
 
 init();

@@ -1,6 +1,6 @@
 //IMPORTS
 import { async } from "regenerator-runtime";
-import { API_URL } from "./config";
+import { API_URL, RESULTS_PER_PAGE } from "./config";
 import { getJsonData } from "./helpers";
 //State Object
 //Which will be rendered in the UI to display all the data regarding a certain food  item
@@ -51,4 +51,14 @@ export const searchResults = async function (query) {
     //Throwing error to be handled by the controller so that the user can see it
     throw err;
   }
+};
+
+//For Pagination
+//Limiting results per page
+export const resultsPerPage = function (page) {
+  //Starting item
+  const start = (page - 1) * RESULTS_PER_PAGE;
+  //Ending item
+  const end = page * RESULTS_PER_PAGE;
+  return state.search.recipes.slice(start, end);
 };

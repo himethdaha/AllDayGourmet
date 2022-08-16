@@ -49,10 +49,9 @@ async function searchRecipes() {
 
     //2) Loading all the recipes
     await model.searchResults(query);
-    console.log(model.state.search.recipes);
 
     //3)Rendering the recipes
-    resultsView.render(model.state.search.recipes);
+    resultsView.render(model.resultsPerPage(1));
 
     //If there are no searched results
     if (model.state.search.recipes.length === 0) {

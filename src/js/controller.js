@@ -52,7 +52,7 @@ async function searchRecipes() {
     await model.searchResults(query);
 
     //3)Rendering the recipes
-    resultsView.render(model.resultsPerPage(3));
+    resultsView.render(model.resultsPerPage(2));
 
     //4)Rendering pagination
     paginationView.render(model.state.search);

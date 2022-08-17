@@ -70,15 +70,25 @@ async function searchRecipes() {
 }
 
 //Function for pagination with new results and pagination buttons
-async function paginateRecipes(page) {
+function paginateRecipes(page) {
   //Rendering new results
   resultsView.render(model.resultsPerPage(page));
   //Rendering new pagination buttons
   paginationView.render(model.state.search);
 }
+
+//Function to increase/decrease ingredient quantities based on the number of servings
+function changeRecipeInredientQuantity(servings) {
+  //Set the new servings in the model
+  model.changeServings(servings);
+  //Render the page again
+  recipeView.render(model.state.recipe);
+}
+
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  recipeView.addHandlerChangeServings(changeRecipeInredientQuantity);
   searchView.addHandlerSearch(searchRecipes);
   paginationView.addHandlerChangeResults(paginateRecipes);
 };

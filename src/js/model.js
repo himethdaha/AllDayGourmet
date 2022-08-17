@@ -65,3 +65,16 @@ export const resultsPerPage = function (page = state.search.page) {
   const end = page * RESULTS_PER_PAGE;
   return state.search.recipes.slice(start, end);
 };
+
+//For increase/decrease in the number of servings
+export const changeServings = function (newServings) {
+  //Go thorugh the ingredients in the state and change them
+  state.recipe.ingredients.forEach((ingr) => {
+    if (ingr.quantity === null || ingr.quantity === 0) return;
+    //Change the quantity of each ingredient based on the newServings
+    ingr.quantity = (ingr.quantity * newServings) / state.recipe.servings;
+  });
+
+  //Update the servings in state
+  state.recipe.servings = newServings;
+};

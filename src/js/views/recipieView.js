@@ -89,10 +89,14 @@ class RecipeView extends View {
                   }</span>
                   <span class="cooking-info-text servings-number-text">Servings</span>
                 <div class="quantity-buttons">
-                    <button class="quantity-button btn-reduce" data-update-to="3">
+                    <button class="quantity-button btn-reduce" data-updateto="${
+                      this._data.servings - 1
+                    }">
                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="servings-icon"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="88" y1="128" x2="168" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
                     </button>
-                    <button class="quantity-button btn-increase"  data-update-to="5" >
+                    <button class="quantity-button btn-increase"  data-updateto="${
+                      this._data.servings + 1
+                    }" >
                       <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="servings-icon"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></circle><line x1="88" y1="128" x2="168" y2="128" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line><line x1="128" y1="88" x2="128" y2="168" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line></svg>
                     </button>
                 </div>
@@ -144,6 +148,22 @@ class RecipeView extends View {
   addHandlerRender(handler) {
     window.addEventListener("hashchange", handler);
     window.addEventListener("load", handler);
+  }
+
+  //Handler to update ingredient quantites based on servings amount
+  addHandlerChangeServings(handler) {
+    //event delegation
+    this._parentElement.addEventListener("click", function (e) {
+      //Select the increase/decrease buttons
+      const btn = e.target.closest(".quantity-button");
+      console.log(btn);
+      if (!btn) return;
+
+      //Save the increment/decrement value
+      const changeTo = Number(btn.dataset.updateto);
+      console.log(changeTo);
+      if (changeTo > 0) handler(changeTo);
+    });
   }
 }
 

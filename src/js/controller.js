@@ -88,10 +88,16 @@ function changeRecipeInredientQuantity(servings) {
 
 //Function for recipe bookmarks
 function recipeBookmarked() {
-  model.bookmarked(model.state.recipe);
+  //If recipe ISN'T bookmarked and the button is clicked
+  if (!model.state.recipe.bookmarked) {
+    model.bookmark(model.state.recipe);
+  } else {
+    model.removeBookmark(model.state.recipe.id);
+  }
+
   recipeView.update(model.state.recipe);
-  console.log(model.state.recipe);
 }
+
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);

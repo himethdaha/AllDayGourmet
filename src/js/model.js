@@ -28,6 +28,14 @@ export const loadRecipie = async function (id) {
       servings: recipe.servings,
       time: recipe.cooking_time,
     };
+    //Everytime a recipe is loaded, check if the recipe's id is present in the bookmarks array and if so,
+    if (state.bookmarks.some((bookmark) => bookmark.id === state.recipe.id)) {
+      console.log(bookmark);
+      //Set bookmarked property to true so that the bookmark button in recipieView can identify that and mark the button as bookmarked
+      state.recipe.bookmarked = true;
+    } else {
+      state.recipe.bookmarked = false;
+    }
   } catch (err) {
     console.log(`Model Error: ${err}`);
     //Throwing error to be handled by the controller so that the user can see it
@@ -83,9 +91,22 @@ export const changeServings = function (newServings) {
 };
 
 //When an item is bookmarked
-export const bookmarked = function (recipe) {
+export const bookmark = function (recipe) {
   //Push the recipe into the bookmarks array in state
   state.bookmarks.push(recipe);
+  console.log(state.bookmarks);
   //Add a property called 'bookmarked' into the recipe object
   state.recipe.bookmarked = true;
+};
+
+//To remove a bookmarked item
+export const removeBookmark = function (id) {
+  //To get the id of the removing item
+  const index = state.bookmarks.findIndex((el) => el.id === id);
+  console.log(index);
+  //Remove item from array
+  state.bookmarks.splice(index, 1);
+
+  //Mark item as not bookmarked
+  if (id === state.recipe.id) state.recipe.bookmarked = false;
 };

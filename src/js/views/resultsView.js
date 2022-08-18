@@ -4,11 +4,14 @@ class ResultsView extends View {
   _parentElement = document.querySelector(".result-list");
 
   _generateMarkup() {
+    const urlId = window.location.hash.split("#")[1];
     return `
         ${this._data.map((element) => {
           return `
             <li class="result-preview">
-                <a href="#${element.id}" class="result-preview-link">
+                <a href="#${element.id}" class="result-preview-link ${
+            element.id === urlId ? "active-preview" : ""
+          }">
             <figure class="result-preview-figure">
                 <img src="${element.img}" alt="" class="result-preview-img">
               </figure>

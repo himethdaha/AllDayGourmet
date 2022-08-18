@@ -65,7 +65,7 @@ class PaginationView extends View {
 
       console.log(btn);
 
-      //   =Get the dataset of each button which is the Page no to move onto
+      //Get the dataset of each button which is the Page no to move onto
       const moveToPage = Number(btn.dataset.moveto);
 
       //Call the subscriber

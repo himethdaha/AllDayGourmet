@@ -15,6 +15,27 @@ export default class View {
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
+  //Update method to only update the changed elements in the dom
+  update(data) {
+    this._data = data;
+    const newMarkup = this._generateMarkup();
+
+    //Creating a segment of a document structure comprised of nodes just like the standard document
+    const newDom = document.createRange().createContextualFragment(newMarkup);
+    //Selecting all the previous elements before the DOM elements were changed
+    const prevElements = Array.from(this._parentElement.querySelectorAll("*"));
+    //Selecting all the elements in the virtual DOM (newDom)
+    const newElements = Array.from(newDom.querySelectorAll("*"));
+
+    //Compare the two arrays to find out which elements have been changed
+    newElements.forEach((el, i) => {
+      if (prevElements[i].innerHTML !== el.innerHTML) {
+        //Change the previous values to the newly set values from the virtual DOM
+        prevElements[i].innerHTML = el.innerHTML;
+      }
+    });
+  }
+
   renderSpinner() {
     //Create the spinner markuo
     const spinner = this.spinnerMarkup();

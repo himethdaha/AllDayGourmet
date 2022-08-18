@@ -16,6 +16,7 @@ async function controlRecipes() {
   try {
     //Get the id from the url
     const id = window.location.hash.split("#");
+    console.log(window.location.hash.split("#")[1]);
 
     //If there is no id in the url just return
     if (id.length === 1) {
@@ -25,10 +26,12 @@ async function controlRecipes() {
     //While await, call renderSpinner
     recipeView.renderSpinner();
 
-    //1) Loading the recipie
+    //1)Update the search results and highlight the clicked item in the aside preview list
+    resultsView.update(model.resultsPerPage());
+    //2) Loading the recipie
     //Not saving anything here cos we don't return anything in this promise
     await model.loadRecipie(id);
-    //2) Rendering the recipe
+    //3) Rendering the recipe
     recipeView.render(model.state.recipe);
   } catch (error) {
     //Passing in the error from 'helpers.js' which was caught and re thrown by 'model.js' to be seen by the user
@@ -82,7 +85,7 @@ function changeRecipeInredientQuantity(servings) {
   //Set the new servings in the model
   model.changeServings(servings);
   //Render the page again
-  recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 }
 
 //Initialization Method

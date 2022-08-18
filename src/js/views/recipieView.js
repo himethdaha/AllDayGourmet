@@ -156,12 +156,10 @@ class RecipeView extends View {
     this._parentElement.addEventListener("click", function (e) {
       //Select the increase/decrease buttons
       const btn = e.target.closest(".quantity-button");
-      console.log(btn);
       if (!btn) return;
 
       //Save the increment/decrement value
       const changeTo = Number(btn.dataset.updateto);
-      console.log(changeTo);
       if (changeTo > 0) handler(changeTo);
     });
   }

@@ -10,6 +10,7 @@ export const state = {
     recipes: [],
     page: 1,
   },
+  bookmarks: [],
 };
 
 export const loadRecipie = async function (id) {
@@ -47,6 +48,8 @@ export const searchResults = async function (query) {
         publisher: recipe.publisher,
       };
     });
+    //Reset page in state to 1 cos, if a user queries another search while in a different page, the results queried will be from that page and not page 1
+    state.search.page = 1;
   } catch (error) {
     console.log(`Model Error: ${error}`);
     //Throwing error to be handled by the controller so that the user can see it
@@ -77,4 +80,12 @@ export const changeServings = function (newServings) {
 
   //Update the servings in state
   state.recipe.servings = newServings;
+};
+
+//When an item is bookmarked
+export const bookmarked = function (recipe) {
+  //Push the recipe into the bookmarks array in state
+  state.bookmarks.push(recipe);
+  //Add a property called 'bookmarked' into the recipe object
+  state.recipe.bookmarked = true;
 };

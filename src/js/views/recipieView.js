@@ -102,7 +102,9 @@ class RecipeView extends View {
                 </div>
             </div>
             <button class="btn-dish-bookmark">
-                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="bookmark-dish-icon"><rect width="256" height="256" fill="none"></rect><path d="M192,224l-64-40L64,224V48a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8Z" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 256 256" class="bookmark-dish-icon ${
+                      this._data.bookmarked ? "bookedmark-icon" : ""
+                    }"><rect width="256" height="256" fill="none"></rect><path d="M192,224l-64-40L64,224V48a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8Z" fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
             </button>
         </div>
         <div class="dish-ingredients">
@@ -161,6 +163,17 @@ class RecipeView extends View {
       //Save the increment/decrement value
       const changeTo = Number(btn.dataset.updateto);
       if (changeTo > 0) handler(changeTo);
+    });
+  }
+
+  //Handler for bookmarks
+  addHandlerBookmarks(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      //Get the bookmark button
+      const btn = e.target.closest(".btn-dish-bookmark");
+
+      if (!btn) return;
+      handler();
     });
   }
 }

@@ -16,7 +16,6 @@ async function controlRecipes() {
   try {
     //Get the id from the url
     const id = window.location.hash.split("#");
-    console.log(window.location.hash.split("#")[1]);
 
     //If there is no id in the url just return
     if (id.length === 1) {
@@ -44,7 +43,6 @@ async function searchRecipes() {
   try {
     //1)Query coming in from the searchView
     const query = searchView.getQuery();
-    console.log(query);
     //If no query present
     if (!query) return;
 
@@ -88,10 +86,17 @@ function changeRecipeInredientQuantity(servings) {
   recipeView.update(model.state.recipe);
 }
 
+//Function for recipe bookmarks
+function recipeBookmarked() {
+  model.bookmarked(model.state.recipe);
+  recipeView.update(model.state.recipe);
+  console.log(model.state.recipe);
+}
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerChangeServings(changeRecipeInredientQuantity);
+  recipeView.addHandlerBookmarks(recipeBookmarked);
   searchView.addHandlerSearch(searchRecipes);
   paginationView.addHandlerChangeResults(paginateRecipes);
 };

@@ -50,7 +50,7 @@ class PaginationView extends View {
       `;
     }
     //If only Pg=1
-    if (noOfPages === 1) {
+    if (noOfPages === 1 || !noOfPages) {
       return ``;
     }
   }
@@ -62,8 +62,6 @@ class PaginationView extends View {
       const btn = e.target.closest(".btn-pagination");
 
       if (!btn) return;
-
-      console.log(btn);
 
       //Get the dataset of each button which is the Page no to move onto
       const moveToPage = Number(btn.dataset.moveto);

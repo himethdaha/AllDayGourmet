@@ -94,7 +94,6 @@ export const changeServings = function (newServings) {
 export const bookmark = function (recipe) {
   //Push the recipe into the bookmarks array in state
   state.bookmarks.push(recipe);
-  console.log(state.bookmarks);
   //Add a property called 'bookmarked' into the recipe object
   state.recipe.bookmarked = true;
 };

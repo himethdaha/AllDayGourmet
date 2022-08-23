@@ -542,6 +542,64 @@ body {
   text-align: center;
 }
 
+.order-list {
+  list-style: none;
+  padding: 0rem 1.5rem 0rem;
+  margin-bottom: 1.2rem;
+}
+
+.order-preview {
+  transition: all 0.3s;
+}
+
+.order-preview:last-child {
+  margin-bottom: 2rem;
+}
+.order-preview:hover {
+  background-color: #c5c2c2;
+  transform: translateY(-1.2px);
+}
+
+.order-preview-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 1rem;
+  transition: all 0.3s;
+  padding: 1.4rem 2.4rem;
+  text-decoration: none;
+}
+
+.order-preview-title {
+  color: #343a40;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+.order-preview-figure {
+  height: 5.8rem;
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+  flex: 0 0 5.8rem;
+}
+
+.order-preview-figure::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.order-preview-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 .pagination-btn-section {
   padding: 0rem 3rem;
 }

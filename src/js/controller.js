@@ -3,6 +3,7 @@ import recipeView from "./views/recipieView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
+import bookmarksView from "./views/bookmarksView.js";
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -27,10 +28,12 @@ async function controlRecipes() {
 
     //1)Update the search results and highlight the clicked item in the aside preview list
     resultsView.update(model.resultsPerPage());
-    //2) Loading the recipie
+    //2)Update the bookmarks list to be highlighted when on item
+    bookmarksView.update(model.state.bookmarks);
+    //3) Loading the recipie
     //Not saving anything here cos we don't return anything in this promise
     await model.loadRecipie(id);
-    //3) Rendering the recipe
+    //4) Rendering the recipe
     recipeView.render(model.state.recipe);
   } catch (error) {
     //Passing in the error from 'helpers.js' which was caught and re thrown by 'model.js' to be seen by the user
@@ -88,14 +91,20 @@ function changeRecipeInredientQuantity(servings) {
 
 //Function for recipe bookmarks
 function recipeBookmarked() {
-  //If recipe ISN'T bookmarked and the button is clicked
+  //1)If recipe ISN'T bookmarked and the button is clicked
   if (!model.state.recipe.bookmarked) {
     model.bookmark(model.state.recipe);
-  } else {
+  }
+  //2)If recipe IS bookmarked and the button is clicked
+  else {
     model.removeBookmark(model.state.recipe.id);
   }
 
+  //3)update the recipieView with the bookmark button colored
   recipeView.update(model.state.recipe);
+
+  //4)Render the bookmarks-list with all the bookmarked recipes
+  bookmarksView.render(model.state.bookmarks);
 }
 
 //Initialization Method

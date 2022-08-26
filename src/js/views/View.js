@@ -6,7 +6,6 @@ export default class View {
 
   render(data) {
     this._data = data;
-    console.log(this._data);
     //Create the markup
     const markup = this._generateMarkup();
     //Hide the message box and spinner

@@ -2,6 +2,15 @@ import View from "./View";
 
 class BookmarksView extends View {
   _parentElement = document.querySelector(".bookmarks-list");
+  _bookmarksBox = document.querySelector(".bookmarks-box");
+  _openBookmarks = document.querySelector(".bookmark-item");
+  _closeBookmarks = document.querySelector(".close-bookmark");
+
+  constructor() {
+    super();
+    this._addHandlerOpenBookmarks();
+    this._addHandlerCloseBookmarks();
+  }
 
   _generateMarkup() {
     const urlId = window.location.hash.split("#")[1];
@@ -23,6 +32,24 @@ class BookmarksView extends View {
             `;
         })}
     `;
+  }
+
+  addHandlerRenderBookmark(handler) {
+    window.addEventListener("load", handler);
+  }
+
+  //Method to bind this with the instance of the class
+  toggle() {
+    this._bookmarksBox.classList.toggle("hidden");
+  }
+  //Method to show bookmarks
+  _addHandlerOpenBookmarks() {
+    this._openBookmarks.addEventListener("click", this.toggle.bind(this));
+  }
+
+  //Method to close bookmarks
+  _addHandlerCloseBookmarks() {
+    this._closeBookmarks.addEventListener("click", this.toggle.bind(this));
   }
 }
 

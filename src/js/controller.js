@@ -28,13 +28,14 @@ async function controlRecipes() {
 
     //1)Update the search results and highlight the clicked item in the aside preview list
     resultsView.update(model.resultsPerPage());
-    //2)Update the bookmarks list to be highlighted when on item
-    bookmarksView.update(model.state.bookmarks);
-    //3) Loading the recipie
+
+    //2) Loading the recipie
     //Not saving anything here cos we don't return anything in this promise
     await model.loadRecipie(id);
-    //4) Rendering the recipe
+    //3) Rendering the recipe
     recipeView.render(model.state.recipe);
+    //4)Update the bookmarks list to be highlighted when on item
+    bookmarksView.update(model.state.bookmarks);
   } catch (error) {
     //Passing in the error from 'helpers.js' which was caught and re thrown by 'model.js' to be seen by the user
     recipeView.errorMessage(error);
@@ -107,6 +108,14 @@ function recipeBookmarked() {
   bookmarksView.render(model.state.bookmarks);
 }
 
+//Function to load all bookmarked items on window load
+const loadAllBookmarks = function () {
+  //Render the bookmarks
+  if (model.state.bookmarks.length > 0) {
+    bookmarksView.render(model.state.bookmarks);
+  }
+};
+
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
@@ -114,6 +123,7 @@ const init = function () {
   recipeView.addHandlerBookmarks(recipeBookmarked);
   searchView.addHandlerSearch(searchRecipes);
   paginationView.addHandlerChangeResults(paginateRecipes);
+  bookmarksView.addHandlerRenderBookmark(loadAllBookmarks);
 };
 
 init();

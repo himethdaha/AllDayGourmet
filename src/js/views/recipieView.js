@@ -129,7 +129,17 @@ class RecipeView extends View {
                       .join("")}
                 
                 </ul>
+                <div class="order-btn-flex">
+                  <button class="btn-order">
+                      ${
+                        this._data.ordered
+                          ? '<span class="order-text">Remove Order</span>'
+                          : '<span class="order-text">Order</span>'
+                      }
+                  </button>
+        <     /div>
         </div>
+        
       `;
   }
 
@@ -171,6 +181,16 @@ class RecipeView extends View {
     this._parentElement.addEventListener("click", function (e) {
       //Get the bookmark button
       const btn = e.target.closest(".btn-dish-bookmark");
+
+      if (!btn) return;
+      handler();
+    });
+  }
+
+  //Handler for orders to be loaded
+  addHandlerOrders(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn-order");
 
       if (!btn) return;
       handler();

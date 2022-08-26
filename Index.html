@@ -253,7 +253,23 @@
                   >
                 </ul>
               </div>
-             
+              <button type="button" class="btn-extra add-comments">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256"
+                  class="svg-extra"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M149.7,195.9l-14.8,24.7a8.1,8.1,0,0,1-13.8,0l-14.8-24.7a7.9,7.9,0,0,0-6.8-3.9H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V184a8,8,0,0,1-8,8H156.5A7.9,7.9,0,0,0,149.7,195.9Z"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="24"
+                  ></path>
+                </svg>
+                Add Comments
+              </button>
               <button type="button" class="btn-extra bookmark-item">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -355,6 +371,82 @@
                <!--Section containing the searched food item added through the file 'controller.js'-->
               
               </div> 
+              <div class="comment-box hidden">
+                <button class="close-comment-btn close-btn">x</button>
+                <form class="upload-comments form-upload">
+                  <div class="form-column">
+                    <h3 class="form-title">Comments</h3>
+                    <label class="form-label">Name</label>
+                    <input
+                      type="text"
+                      name="cust-name"
+                      class="form-input"
+                      placeholder="Son Goku"
+                    />
+                    <label class="form-label">Preferences</label>
+                    <input
+                      type="text"
+                      name="preferences"
+                      class="form-input"
+                      placeholder="Add a little bit more cheese pls :)"
+                    />
+                    <label class="form-label">Allergies</label>
+                    <input
+                      type="text"
+                      name="allergies"
+                      class="form-input"
+                      placeholder="I will die if I eat peanuts 😵"
+                    />
+                    <label class="form-label">Delivery</label>
+                    <input
+                      type="text"
+                      name="delivery"
+                      class="form-input"
+                      placeholder="Please Leave at front door.."
+                    />
+                    <label class="form-label">Other</label>
+                    <input
+                      type="text"
+                      name="other"
+                      class="form-input"
+                      placeholder="Best food I've ever had!!"
+                    />
+                  </div>
+                  <button type="submit" class="submit-comment comment-btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 256 256"
+                      class="submit-icon"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <polyline
+                        points="86 82 128 40 170 82"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></polyline>
+                      <line
+                        x1="128"
+                        y1="152"
+                        x2="128"
+                        y2="40"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></line>
+                      <path
+                        d="M216,152v56a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V152"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
       </section>
  
 

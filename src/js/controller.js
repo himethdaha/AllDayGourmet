@@ -4,6 +4,8 @@ import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import bookmarksView from "./views/bookmarksView.js";
+import ordersView from "./views/ordersView.js";
+import commentsView from "./views/commentsView.js";
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -36,6 +38,8 @@ async function controlRecipes() {
     recipeView.render(model.state.recipe);
     //4)Update the bookmarks list to be highlighted when on item
     bookmarksView.update(model.state.bookmarks);
+    //5)Update the orders view to be highlighted when on item
+    ordersView.update(model.state.orders);
   } catch (error) {
     //Passing in the error from 'helpers.js' which was caught and re thrown by 'model.js' to be seen by the user
     recipeView.errorMessage(error);
@@ -108,6 +112,22 @@ function recipeBookmarked() {
   bookmarksView.render(model.state.bookmarks);
 }
 
+//Function for ordered items
+function orderedItems() {
+  //If the order button ISN'T clicked, push the new item into the orders array
+  if (!model.state.recipe.ordered) {
+    model.ordered(model.state.recipe);
+  }
+  //If the order button IS clicked, remove the item from the orders array
+  else {
+    model.removeOrder(model.state.recipe.id);
+  }
+  //Update the recipe view with the order button text changed
+  recipeView.update(model.state.recipe);
+  //Render the orders view
+  ordersView.render(model.state.orders);
+}
+
 //Function to load all bookmarked items on window load
 const loadAllBookmarks = function () {
   //Render the bookmarks
@@ -116,14 +136,26 @@ const loadAllBookmarks = function () {
   }
 };
 
+//Function to load all orders on page load
+const loadAllOrders = function () {
+  if (model.state.orders.length > 0) {
+    ordersView.render(model.state.orders);
+  }
+};
+
+const uploadComments = function (recipe) {
+  console.log(recipe);
+};
 //Initialization Method
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerChangeServings(changeRecipeInredientQuantity);
   recipeView.addHandlerBookmarks(recipeBookmarked);
+  recipeView.addHandlerOrders(orderedItems);
   searchView.addHandlerSearch(searchRecipes);
   paginationView.addHandlerChangeResults(paginateRecipes);
   bookmarksView.addHandlerRenderBookmark(loadAllBookmarks);
+  ordersView.addHandlerLoadOrders(loadAllOrders);
 };
 
 init();

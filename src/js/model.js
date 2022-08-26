@@ -11,6 +11,7 @@ export const state = {
     page: 1,
   },
   bookmarks: [],
+  orders: [],
 };
 
 export const loadRecipie = async function (id) {
@@ -28,9 +29,16 @@ export const loadRecipie = async function (id) {
       servings: recipe.servings,
       time: recipe.cooking_time,
     };
+
+    //Everytime a recipe is loaded, check if it's been ordered and if so
+    if (state.orders.some((order) => order.id === state.recipe.id)) {
+      state.recipe.ordered = true;
+    } else {
+      state.recipe.ordered = false;
+    }
+
     //Everytime a recipe is loaded, check if the recipe's id is present in the bookmarks array and if so,
     if (state.bookmarks.some((bookmark) => bookmark.id === state.recipe.id)) {
-      console.log(bookmark);
       //Set bookmarked property to true so that the bookmark button in recipieView can identify that and mark the button as bookmarked
       state.recipe.bookmarked = true;
     } else {
@@ -94,6 +102,12 @@ export const changeServings = function (newServings) {
 const storeBookmarks = function () {
   localStorage.setItem("bookmark", JSON.stringify(state.bookmarks));
 };
+
+//To store orders in local storage
+const storeOrders = function () {
+  localStorage.setItem("order", JSON.stringify(state.orders));
+};
+
 //When an item is bookmarked
 export const bookmark = function (recipe) {
   //Push the recipe into the bookmarks array in state
@@ -103,6 +117,29 @@ export const bookmark = function (recipe) {
 
   //Store in local storage
   storeBookmarks();
+};
+
+//When an item is marked as orders
+export const ordered = function (recipe) {
+  //Push order into array
+  state.orders.push(recipe);
+  //Add property ordered to the recipe
+  state.recipe.ordered = true;
+
+  //Store order in local storage
+  storeOrders();
+};
+
+//When an item is removed from the order state
+export const removeOrder = function (id) {
+  //Find index first
+  const index = state.orders.findIndex((el) => el.id === id);
+  state.orders.splice(index, 1);
+
+  //Mark recipe as not ordered
+  if (id === state.recipe.id) state.recipe.ordered = false;
+  //Remove from local storage
+  storeOrders();
 };
 
 //To remove a bookmarked item
@@ -118,15 +155,23 @@ export const removeBookmark = function (id) {
   storeBookmarks();
 };
 
-//Function to load bookmarks when the page is loaded
+//Function to load bookmarks and orders when the page is loaded
 const init = function () {
   //Store the bookmarks in a variable
-  const storage = localStorage.getItem("bookmark");
+  const storageBookmarks = localStorage.getItem("bookmark");
+
   //If there are bookmarks then convert the string into an object and store it in state.bookmarks property
-  if (storage) {
-    state.bookmarks = JSON.parse(storage);
+  if (storageBookmarks) {
+    state.bookmarks = JSON.parse(storageBookmarks);
+  }
+
+  //Store orders
+  const storeOrders = localStorage.getItem("order");
+
+  //If there are orders then convert the string into an obeject and store in orders array to be read when the page is loaded
+  if (storeOrders) {
+    state.orders = JSON.parse(storeOrders);
   }
 };
 
 init();
-console.log(state.bookmarks);
